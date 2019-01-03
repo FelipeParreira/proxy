@@ -13,10 +13,13 @@ router.get('/', (req, res, next) => {
   //   success: data => res.send(data),
   //   error: (err) => console.log('error!!!!', err)
   // });
-  fetch('http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/testQA')
-  .then(data => {
-    res.send(data);
-  });
+  const response = await fetch('http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/testQA');
+  const data = await response.json();
+  res.send(data);
+  // fetch('')
+  // .then(data => {
+  //   res.send(data);
+  // });
 });
 
 module.exports = router;
