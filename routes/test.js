@@ -1,7 +1,7 @@
 const express = require('express');
-const request = require('request-promise');
-const fetch = require('node-fetch');
-const $ = require('jquery');
+// const request = require('request-promise');
+// const fetch = require('node-fetch');
+// const $ = require('jquery');
 const router = express.Router();
 
 /* GET test */
