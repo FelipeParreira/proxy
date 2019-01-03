@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
     type: 'GET',
     url: 'http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/testQA',
     success: data => res.send(data),
-    error: (err) => console.log('error', err)
+    error: (err) => console.log('error!!!!', err)
   });
 });
 
