@@ -11,7 +11,8 @@ router.use((req, res, next) => {
 /* GET questions */
 router.get('/', (req, res, next) => {
   console.log('inside get request of qa route [proxy server]');
-  res.redirect('http://localhost:3004/questions');
+  res.send('hello');
+  // res.redirect('http://localhost:3004/questions');
 });
 
 router.get('/hotels/:hotelId/questions', (req, res, next) => {
