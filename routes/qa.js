@@ -52,12 +52,15 @@ router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
 });
 
 // // POST a report for a certain question
-// router.post('/hotels/:hotelId/questions/:questionId/reports', (req, res) => {
-//   // the following function is just a stub
-//   // since our Q&A module is not able to retrieve reports,
-//   // we are not saving anything; you can implement this in the future if you want.
-//   postReportForQuestion(res);
-// });
+router.post('/hotels/:hotelId/questions/:questionId/reports', (req, res) => {
+  const { questionId, hotelId } = req.params;
+  axios.post(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}/reports`, {
+    userId
+  })
+  .then(response => {
+    res.send(response.data);
+  });
+});
 
 // // POST an answer for a certain question
 // router.post('/hotels/:hotelId/questions/:questionId/answers', (req, res) => {
