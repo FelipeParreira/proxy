@@ -57,7 +57,6 @@ router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
   });
 });
 
-// === FROM HERE ====
 // POST a report for a certain question
 router.post('/hotels/:hotelId/questions/:questionId/reports', (req, res) => {
   const { questionId, hotelId } = req.params;
@@ -110,13 +109,21 @@ router.patch('/hotels/:hotelId/questions/:questionId/answers/:answerId/votes', (
   });
 });
 
-// // POST a report for a certain answer
-// router.post('/hotels/:hotelId/questions/:questionId/answers/:answerId/reports', (req, res) => {
-//   // the following function is just a stub
-//   // since our Q&A module is not able to retrieve reports,
-//   // we are not saving anything; you can implement this in the future if you want.
-//   postReportForAnswer(res);
-// });
+// === FROM HERE ====
+// POST a report for a certain answer
+router.post('/hotels/:hotelId/questions/:questionId/answers/:answerId/reports', (req, res) => {
+  // the following function is just a stub
+  // since our Q&A module is not able to retrieve reports,
+  // we are not saving anything; you can implement this in the future if you want.
+  const { hotelId, questionId, answerId } = req.params;
+  axios.post(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}/answers/${answerId}/reports`)
+  .then(response => {
+    res.send(response.data);
+  })
+  .catch(error => {
+    res.send(error);
+  });
+});
 
 // // POST a message for a certain user
 // router.post('/users/:userId/messages', (req, res) => {
