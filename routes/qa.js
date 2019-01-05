@@ -50,9 +50,9 @@ router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
   .then(response => {
     res.send(response.data);
   })
-  .catch(error => {
-    res.send(error);
-  });
+  // .catch(error => {
+  //   res.send(error);
+  // });
 });
 
 // // POST a report for a certain question
