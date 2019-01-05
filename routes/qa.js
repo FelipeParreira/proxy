@@ -45,7 +45,7 @@ router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
   const { userId } = req.body;
   axios.delete(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}`, {
     userId,
-    timeout: 1000,
+    timeout: 60000,
   })
   .then(response => {
     res.send(response.data);
