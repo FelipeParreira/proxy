@@ -71,11 +71,15 @@ router.post('/hotels/:hotelId/questions/:questionId/reports', (req, res) => {
 });
 
 // // POST an answer for a certain question
-// router.post('/hotels/:hotelId/questions/:questionId/answers', (req, res) => {
-//   const { questionId } = req.params;
-//   const { content, userId } = req.body;
-//   postAnswer(questionId, userId, content, res);
-// });
+router.post('/hotels/:hotelId/questions/:questionId/answers', (req, res) => {
+  const { questionId, hotelId } = req.params;
+  const { content, userId } = req.body;
+  axios.post(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}/answers`, 
+  { content, userId })
+  .then(response => {
+    res.send(response.data);
+  });
+});
 
 // // DELETE an answer for a certain question
 // router.delete('/hotels/:hotelId/questions/:questionId/answers/:answerId', (req, res) => {
