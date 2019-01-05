@@ -98,7 +98,7 @@ router.delete('/hotels/:hotelId/questions/:questionId/answers/:answerId', (req, 
 router.patch('/hotels/:hotelId/questions/:questionId/answers/:answerId/votes', (req, res) => {
   // vote should be 1 or -1
   const { vote } = req.body;
-  const { answerId, hotelId, questionId, answerId } = req.params;
+  const { answerId, hotelId, questionId } = req.params;
   axios.patch(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}/answers/${answerId}/votes`, {
     vote
   })
