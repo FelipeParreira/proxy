@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
-const proxy = require('http-proxy-middleware');
+// const proxy = require('http-proxy-middleware');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // redirecting to app server
-app.use('qa/hotels/:hotelId/questions/:questionId', proxy({ target: 'http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/', changeOrigin: true }));
+// app.use('qa/hotels/:hotelId/questions/:questionId', proxy({ target: 'http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/', changeOrigin: true }));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

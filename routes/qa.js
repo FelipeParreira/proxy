@@ -1,10 +1,9 @@
 const express = require('express');
 const axios = require('axios');
 const util = require('util');
-const proxy = require('http-proxy-middleware');
+// const proxy = require('http-proxy-middleware');
 const router = express.Router();
 
-router.use('/hotels/:hotelId/questions/:questionId', proxy({ target: 'http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com', changeOrigin: true }));
 
 router.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
