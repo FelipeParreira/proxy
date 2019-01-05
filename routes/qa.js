@@ -40,7 +40,7 @@ router.post('/hotels/:hotelId/questions', (req, res) => {
     res.send(response.data);
   });
 });
-// === FROM HERE ====
+
 // DELETE a question for a hotel
 router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
   const { questionId, hotelId } = req.params;
@@ -57,7 +57,8 @@ router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
   });
 });
 
-// // POST a report for a certain question
+// === FROM HERE ====
+// POST a report for a certain question
 router.post('/hotels/:hotelId/questions/:questionId/reports', (req, res) => {
   const { questionId, hotelId } = req.params;
   axios.post(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}/reports`, {
@@ -80,12 +81,18 @@ router.post('/hotels/:hotelId/questions/:questionId/answers', (req, res) => {
   });
 });
 
-// // DELETE an answer for a certain question
-// router.delete('/hotels/:hotelId/questions/:questionId/answers/:answerId', (req, res) => {
-//   const { answerId } = req.params;
-//   const { userId } = req.body;
-//   deleteAnswer(answerId, userId, res);
-// });
+// DELETE an answer for a certain question
+router.delete('/hotels/:hotelId/questions/:questionId/answers/:answerId', (req, res) => {
+  const { answerId, hotelId, questionId } = req.params;
+  const { userId } = req.body;
+  axios.delete(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}/answers/${answerId}/${userId}`)
+  .then(response => {
+    res.send(response.data);
+  })
+  .catch(error => {
+    res.send(error);
+  });
+});
 
 // // Upvote or downvote a certain answer to a particular question
 // router.patch('/hotels/:hotelId/questions/:questionId/answers/:answerId/votes', (req, res) => {
