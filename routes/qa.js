@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const util = require('util')
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -22,7 +23,7 @@ router.get('/hotels/:hotelId/questions', (req, res, next) => {
   // res.send(['aba']);
   axios.get(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions`)
   .then(data => {
-    res.send(data);
+    res.send(util.inspect(data));
   });
   // res.redirect(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions`);
 });
