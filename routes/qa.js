@@ -1,6 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const util = require('util');
+const proxy = require('http-proxy-middleware');
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -40,20 +41,20 @@ router.post('/hotels/:hotelId/questions', (req, res) => {
 });
 // === FROM HERE ====
 // DELETE a question for a hotel
-router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
-  const { questionId, hotelId } = req.params;
-  const { userId } = req.body;
-  axios.delete(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}`, {
-    userId,
-    timeout: 60000,
-  })
-  .then(response => {
-    res.send('Questions deleted succesfully!');
-  })
-  // .catch(error => {
-  //   res.send(error);
-  // });
-});
+// router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
+//   const { questionId, hotelId } = req.params;
+//   const { userId } = req.body;
+//   axios.delete(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}`, {
+//     userId,
+//     timeout: 60000,
+//   })
+//   .then(response => {
+//     res.send('Questions deleted succesfully!');
+//   })
+//   // .catch(error => {
+//   //   res.send(error);
+//   // });
+// });
 
 // // POST a report for a certain question
 router.post('/hotels/:hotelId/questions/:questionId/reports', (req, res) => {
