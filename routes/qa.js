@@ -61,16 +61,16 @@ router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
 // POST a report for a certain question
 router.post('/hotels/:hotelId/questions/:questionId/reports', (req, res) => {
   const { questionId, hotelId } = req.params;
-  axios.post(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}/reports`, {
-    userId
-  })
+  axios.post(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}/reports`)
   .then(response => {
     res.send(response.data);
+  })
+  .catch(error => {
+    res.send(error);
   });
-
 });
 
-// // POST an answer for a certain question
+// POST an answer for a certain question
 router.post('/hotels/:hotelId/questions/:questionId/answers', (req, res) => {
   const { questionId, hotelId } = req.params;
   const { content, userId } = req.body;
