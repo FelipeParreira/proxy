@@ -22,8 +22,8 @@ router.get('/hotels/:hotelId/questions', (req, res, next) => {
   const { hotelId } = req.params;
   // res.send(['aba']);
   axios.get(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions`)
-  .then(data => {
-    res.send(util.inspect(data));
+  .then(response => {
+    res.send(response.data);
   });
   // res.redirect(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions`);
 });
