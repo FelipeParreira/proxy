@@ -48,7 +48,7 @@ router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
     timeout: 60000,
   })
   .then(response => {
-    res.send(response.data);
+    res.send('Questions deleted succesfully!');
   })
   // .catch(error => {
   //   res.send(error);
