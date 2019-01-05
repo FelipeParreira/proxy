@@ -44,6 +44,7 @@ router.post('/hotels/:hotelId/questions', (req, res) => {
 // DELETE a question for a hotel
 router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
   const { questionId, hotelId } = req.params;
+  res.send([questionId, hotelId]);
   const { userId } = req.body;
   // res.send(['dfgh']);
   axios.delete(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}`, {
