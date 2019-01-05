@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-const util = require('util')
+const util = require('util');
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -60,6 +60,7 @@ router.post('/hotels/:hotelId/questions/:questionId/reports', (req, res) => {
   .then(response => {
     res.send(response.data);
   });
+
 });
 
 // // POST an answer for a certain question
