@@ -43,12 +43,13 @@ router.post('/hotels/:hotelId/questions', (req, res) => {
 router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
   const { questionId, hotelId } = req.params;
   const { userId } = req.body;
-  axios.delete(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}`, {
-    userId
-  })
-  .then(response => {
-    res.send(response.data);
-  });
+  res.send(['uiop']);
+  // axios.delete(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions/${questionId}`, {
+  //   userId
+  // })
+  // .then(response => {
+  //   res.send(response.data);
+  // });
 });
 
 // // POST a report for a certain question
