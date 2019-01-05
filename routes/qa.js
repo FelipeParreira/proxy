@@ -51,11 +51,11 @@ router.delete('/hotels/:hotelId/questions/:questionId', (req, res) => {
     timeout: 60000,
   })
   .then(response => {
-    res.send('Questions deleted succesfully!');
+    res.send(reponse.data);
   })
-  // .catch(error => {
-  //   res.send(error);
-  // });
+  .catch(error => {
+    res.send(error);
+  });
 });
 
 // // POST a report for a certain question
