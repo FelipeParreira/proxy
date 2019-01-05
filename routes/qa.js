@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 const router = express.Router();
 
 router.use((req, res, next) => {
@@ -18,7 +19,11 @@ router.get('/', (req, res, next) => {
 router.get('/hotels/:hotelId/questions', (req, res, next) => {
   // console.log('inside get request of qa route for questions [proxy server]');
   const { hotelId } = req.params;
-  res.redirect(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions`);
+  axios.get(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions`)
+  .then(response => {
+    res.send(response);
+  });
+  // res.redirect(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions`);
 });
 
 module.exports = router;
