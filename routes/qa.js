@@ -21,8 +21,8 @@ router.get('/', (req, res, next) => {
 
 // GET questions for a certain hotel
 router.get('/hotels/:hotelId/questions', (req, res, next) => {
-  res.send([hotelId]);
   const { hotelId } = req.params;
+  res.send([hotelId]);
   axios.get(`http://node-express-env-service-qa.swpb5j5env.us-west-2.elasticbeanstalk.com/hotels/${hotelId}/questions`)
   .then(response => {
     res.send(response.data);
